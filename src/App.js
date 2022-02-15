@@ -13,15 +13,15 @@ function App() {
   const addTodo = () => {
     console.log(title)
     const newTodo = {
-      id: id,
+      todoId: id,
       title: title,
       description: 'Ha en bra dag!'
     }
     setTodos([...todos, newTodo])
     incrementCounter()
   }
-  const deleteTodo = (id) => {
-    const filteredTodos = todos.filter((todo) => todo.id !== id)
+  const deleteTodo = (deleteId) => {
+    const filteredTodos = todos.filter((todo) => todo.todoId !== deleteId)
     setTodos(filteredTodos)
   }
 
@@ -36,8 +36,8 @@ function App() {
         }} /></label>
         <button onClick={addTodo}>ADD TODO</button>
       </div>
-      {todos.map(({id, title, description}) => {
-        return <Todo key={id} id={id} title={title} description={description} onDelete={deleteTodo} />
+      {todos.map(({todoId, title, description}) => {
+        return <Todo key={todoId} id={todoId} title={title} description={description} onDelete={deleteTodo} />
       })}
     </div>
   );
